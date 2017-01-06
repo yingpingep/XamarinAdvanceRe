@@ -4,6 +4,8 @@ using System.Linq;
 
 using Foundation;
 using UIKit;
+using ImageCircle.Forms.Plugin.iOS;
+using FFImageLoading.Forms.Touch;
 
 namespace XamarinAdvanceRe.iOS
 {
@@ -23,6 +25,12 @@ namespace XamarinAdvanceRe.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
+
+            // TODO: Initialize iOS
+            ImageCircleRenderer.Init();
+            Microsoft.WindowsAzure.MobileServices.CurrentPlatform.Init();
+            CachedImageRenderer.Init();
+
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);

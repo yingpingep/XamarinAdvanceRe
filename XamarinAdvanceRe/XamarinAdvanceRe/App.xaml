@@ -5,6 +5,234 @@
   <Application.Resources>
 
     <!-- Application resource dictionary -->
+        <ResourceDictionary>
+            <Color x:Key="BrandColor">#3f51b5</Color>
+            <Color x:Key="BrandColorLight">#c5cae9</Color>
+            <Color x:Key="BrandColorDark">#303f9f</Color>
+            <Color x:Key="BrandAccentColor">#ffeb3b</Color>
+            
+            <!-- Text colors on light backgrounds -->
+            <Color x:FactoryMethod="FromRgba" x:Key="PrimaryTextColor">
+                <x:Arguments>
+                    <x:Double>0</x:Double>
+                    <x:Double>0</x:Double>
+                    <x:Double>0</x:Double>
+                    <x:Double>0.87</x:Double>
+                </x:Arguments>
+            </Color>
 
+            <Color x:FactoryMethod="FromRgba" x:Key="SecondaryTextColor">
+                <x:Arguments>
+                    <x:Double>0</x:Double>
+                    <x:Double>0</x:Double>
+                    <x:Double>0</x:Double>
+                    <x:Double>0.54</x:Double>
+                </x:Arguments>
+            </Color>
+
+            <Color x:FactoryMethod="FromRgba" x:Key="DividersColor">
+                <x:Arguments>
+                    <x:Double>0</x:Double>
+                    <x:Double>0</x:Double>
+                    <x:Double>0</x:Double>
+                    <x:Double>0.12</x:Double>
+                </x:Arguments>
+            </Color>
+            
+            <!-- Text colors on dark backgrounds -->
+            <Color x:Key="PrimaryTextColorOnDark">
+                #fff
+            </Color>
+
+            <Color x:FactoryMethod="FromRgba" x:Key="SecondaryTextColorOnDark">
+                <x:Arguments>
+                    <x:Double>255</x:Double>
+                    <x:Double>255</x:Double>
+                    <x:Double>255</x:Double>
+                    <x:Double>0.70</x:Double>
+                </x:Arguments>
+            </Color>
+
+            <Color x:FactoryMethod="FromRgba" x:Key="DisabledTextColorOnDark">
+                <x:Arguments>
+                    <x:Double>255</x:Double>
+                    <x:Double>255</x:Double>
+                    <x:Double>255</x:Double>
+                    <x:Double>0.30</x:Double>
+                </x:Arguments>
+            </Color>
+            
+            <Color x:FactoryMethod="FromRgba" x:Key="DividersColorOnDark">
+                <x:Arguments>
+                    <x:Double>255</x:Double>
+                    <x:Double>255</x:Double>
+                    <x:Double>255</x:Double>
+                    <x:Double>0.12</x:Double>
+                </x:Arguments>
+            </Color>
+
+            <!-- Font Setting -->
+            <OnPlatform x:Key="RegularFontFamily"
+                        x:TypeArguments="x:String"
+                        iOS="HelveticaNeue"
+                        Android="sans-serif"
+                        WinPhone="" />
+
+            <OnPlatform x:Key="LightFontFamily"
+                        x:TypeArguments="x:String"
+                        iOS="HelveticaNeue-Light"
+                        Android="sans-serif-light"
+                        WinPhone="" />
+
+            <OnPlatform x:Key="MediumFontFamily"
+                        x:TypeArguments="x:String"
+                        iOS="HelveticaNeue-Medium"
+                        Android="sans-serif-medium"
+                        WinPhone="" />
+
+            <Font x:Key="ButtonFont"
+                  FontSize="20"
+                  FontFamily="{StaticResource MediumFontFamily}" />
+
+            <Font x:Key="CaptionFont"
+                  FontSize="12"
+                  FontFamily="{StaticResource RegularFontFamily}" />
+
+            <Font x:Key="BodyFont"
+                  FontSize="14"
+                  FontFamily="{StaticResource RegularFontFamily}" />
+            
+            <Font x:Key="Body2Font"
+                  FontSize="14"
+                  FontFamily="{StaticResource MediumFontFamily}" />
+
+            <Font x:Key="SubheadFont"
+                  FontSize="16"
+                  FontFamily="{StaticResource RegularFontFamily}" />
+
+            <Font x:Key="TitleFont"
+                  FontSize="20"
+                  FontFamily="{StaticResource MediumFontFamily}" />
+
+            <Font x:Key="HeadlineFont"
+                  FontSize="124"
+                  FontFamily="{StaticResource RegularFontFamily}" />
+
+            <Font x:Key="DisplayFont"
+                  FontSize="34"
+                  FontFamily="{StaticResource RegularFontFamily}" />
+
+            <Font x:Key="Display2Font"
+                  FontSize="45"
+                  FontFamily="{StaticResource RegularFontFamily}" />
+
+            <Font x:Key="Display3Font"
+                  FontSize="56"
+                  FontFamily="{StaticResource RegularFontFamily}" />
+
+            <Font x:Key="Display4Font"
+                  FontSize="112"
+                  FontFamily="{StaticResource LightFontFamily}" />
+
+            <!-- Style -->
+            <Style TargetType="Label">
+                <Setter Property="Font"
+                        Value="{StaticResource BodyFont}" />
+            </Style>
+
+            <Style x:Key="CaptionLabel" TargetType="Label">
+                <Setter Property="Font"
+                        Value="{StaticResource CaptionFont}" />
+            </Style>
+
+            <Style x:Key="BodyLabel" TargetType="Label">
+                <Setter Property="Font"
+                        Value="{StaticResource BodyFont}" />
+            </Style>
+
+            <Style x:Key="Body2Label" TargetType="Label">
+                <Setter Property="Font"
+                        Value="{StaticResource Body2Font}" />
+            </Style>
+
+            <Style x:Key="TitleLabel" TargetType="Label">
+                <Setter Property="TextColor"
+                        Value="{StaticResource PrimaryTextColor}" />
+                <Setter Property="Font"
+                        Value="{StaticResource TitleFont}" />
+            </Style>
+
+            <Style x:Key="SubheadLabel" TargetType="Label">
+                <Setter Property="TextColor"
+                        Value="{StaticResource SecondaryTextColor}" />
+                <Setter Property="Font"
+                        Value="{StaticResource SubheadFont}" />
+            </Style>
+
+            <Style x:Key="HeadlineLabel" TargetType="Label">
+                <Setter Property="Font"
+                        Value="{StaticResource HeadlineFont}" />
+            </Style>
+
+            <Style x:Key="DisplayLabel" TargetType="Label">
+                <Setter Property="Font"
+                        Value="{StaticResource DisplayFont}" />
+            </Style>
+
+            <Style x:Key="Display2Label" TargetType="Label">
+                <Setter Property="Font"
+                        Value="{StaticResource Display2Font}" />
+            </Style>
+
+            <Style x:Key="Display3Label" TargetType="Label">
+                <Setter Property="Font"
+                        Value="{StaticResource Display3Font}" />
+            </Style>
+
+            <Style x:Key="Display4Label" TargetType="Label">
+                <Setter Property="Font"
+                        Value="{StaticResource Display4Font}" />
+            </Style>
+            <Style TargetType="NavigationPage">
+                <Setter Property="BarBackgroundColor"
+                        Value="{StaticResource BrandColor}" />
+                <Setter Property="BarTextColor"
+                        Value="White" />
+            </Style>
+            
+            <!-- Xaml Reset -->
+            <Style x:Key="visualStyle"
+                   TargetType="VisualElement">
+                <Setter Property="BackgroundColor"
+                        Value="White" />
+            </Style>
+
+            <Style TargetType="Grid">
+                <Setter Property="Padding"
+                        Value="0" />
+                <Setter Property="RowSpacing"
+                        Value="0" />
+                <Setter Property="ColumnSpacing"
+                        Value="0" />
+            </Style>
+
+            <Style TargetType="StackLayout">
+                <Setter Property="Padding"
+                        Value="0" />
+                <Setter Property="Spacing"
+                        Value="0" />
+            </Style>
+
+            <Style TargetType="Frame">
+                <Setter Property="Padding"
+                        Value="0" />
+                <Setter Property="HasShadow"
+                        Value="false" />
+                <Setter Property="OutlineColor"
+                        Value="Transparent" />
+                <Setter Property="BackgroundColor"
+                        Value="Transparent" />
+            </Style>
+        </ResourceDictionary>
   </Application.Resources>
 </Application>

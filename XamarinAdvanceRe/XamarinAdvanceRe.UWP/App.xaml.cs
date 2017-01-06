@@ -1,7 +1,11 @@
-﻿using System;
+﻿using FFImageLoading.Forms;
+using FFImageLoading.Forms.WinUWP;
+using ImageCircle.Forms.Plugin.UWP;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
@@ -58,7 +62,17 @@ namespace XamarinAdvanceRe.UWP
 
                 rootFrame.NavigationFailed += OnNavigationFailed;
 
-                Xamarin.Forms.Forms.Init(e);
+                // TODO: Initialize UWP                          
+                ImageCircleRenderer.Init();
+
+                var assembliesToInclude = new List<Assembly>()
+                {
+                    typeof(CachedImage).GetTypeInfo().Assembly,
+                    typeof(CachedImageRenderer).GetTypeInfo().Assembly
+                };
+                Xamarin.Forms.Forms.Init(e, assembliesToInclude);
+
+                // Xamarin.Forms.Forms.Init(e);           
 
                 if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
                 {

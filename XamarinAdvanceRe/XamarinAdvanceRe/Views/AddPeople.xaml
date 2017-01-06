@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamarinAdvanceRe.Views.AddPeople"
+             BackgroundColor="{StaticResource BrandColor}"
+             Title="Add Person">
+    <ScrollView>
+        <ContentView BackgroundColor="White" Margin="20">
+            <StackLayout Padding="0, 20, 0, 0"
+                         HorizontalOptions="FillAndExpand"
+                         VerticalOptions="CenterAndExpand">
+                <Label Text="Your Name" Margin="10" Style="{StaticResource Body2Label}" />
+                <Entry x:Name="name" Placeholder="Your Name" Margin="10" />
+
+                <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand">
+                    <Label Text="Your Picture URL" Margin="10" Style="{StaticResource Body2Label}" />
+                    <Button x:Name="AddImage"
+                            Text="Upload"
+                            TextColor="{StaticResource PrimaryTextColor}"
+                            Font="{StaticResource ButtonFont}"
+                            FontSize="Micro"
+                            BackgroundColor="{StaticResource BrandAccentColor}"
+                            HorizontalOptions="Center"
+                            VerticalOptions="CenterAndExpand"
+                            WidthRequest="100"
+                            HeightRequest="40" />
+                </StackLayout>
+                <Entry x:Name="picUrl" Placeholder="http(s)://..." Margin="10" />
+
+                <Label Text="Description" Margin="10" Style="{StaticResource Body2Label}" />
+                <Entry x:Name="description" Placeholder="Dexcription About You ..."
+                       HeightRequest="100" Margin="10" />
+
+                <Label Text="Title" Margin="10" Style="{StaticResource Body2Label}" />
+                <Entry x:Name="title" Placeholder="Your Title (Ex: Developer)" Margin="10" />
+                
+                <Button x:Name="AddBtn"
+                        Text="Upload"
+                        TextColor="{StaticResource PrimaryTextColor}"
+                        Font="{StaticResource ButtonFont}"                        
+                        BackgroundColor="{StaticResource BrandAccentColor}"
+                        HorizontalOptions="Center"
+                        VerticalOptions="CenterAndExpand"
+                        WidthRequest="250"
+                        HeightRequest="80" />
+            </StackLayout>
+        </ContentView>
+    </ScrollView>
+</ContentPage>

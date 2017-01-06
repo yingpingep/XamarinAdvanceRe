@@ -6,6 +6,9 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using ImageCircle.Forms.Plugin.Droid;
+using Acr.UserDialogs;
+using FFImageLoading.Forms.Droid;
 
 namespace XamarinAdvanceRe.Droid
 {
@@ -18,6 +21,11 @@ namespace XamarinAdvanceRe.Droid
             ToolbarResource = Resource.Layout.Toolbar;
 
             base.OnCreate(bundle);
+
+            // TODO: Initialize Android
+            ImageCircleRenderer.Init();
+            UserDialogs.Init(this);
+            CachedImageRenderer.Init();
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
             LoadApplication(new App());

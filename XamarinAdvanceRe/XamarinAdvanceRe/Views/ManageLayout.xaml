@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamarinAdvanceRe.Views.ManageLayout"
+             Title="Manage Person">
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView x:Name="peopleList"
+                      HasUnevenRows="True"
+                      SeparatorVisibility="None">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.ContextActions>
+                                <MenuItem Clicked="DeletePerson"
+                                          Text="Delete"
+                                          CommandParameter="{Binding .}"
+                                          IsDestructive="True" />
+                            </ViewCell.ContextActions>
+
+                            <StackLayout Orientation="Horizontal" Padding="5, 5, 10, 5">
+                                <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                                    <Image Source="{Binding PicUrl}" WidthRequest="60" HeightRequest="60" 
+                                           Aspect="AspectFill" />
+                                </StackLayout>
+
+                                <StackLayout Padding="10, 5, 0, 5" VerticalOptions="Center">
+                                    <Label Text="{Binding Name}" TextColor="#ff1493" />
+                                    <Label Text="{Binding Title}" TextColor="Gray" />
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <Button x:Name="AddNew"
+                    Text="Add Person"
+                    TextColor="{StaticResource PrimaryTextColor}"
+                    Font="{StaticResource ButtonFont}"
+                    BackgroundColor="{StaticResource BrandAccentColor}"
+                    HorizontalOptions="Center"
+                    VerticalOptions="CenterAndExpand"
+                    WidthRequest="200"
+                    HeightRequest="50"
+                    Margin="0, 5, 0, 0" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

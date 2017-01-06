@@ -4,7 +4,9 @@ using System.Linq;
 using System.Text;
 
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 
+[assembly: XamlCompilation(XamlCompilationOptions.Skip)]
 namespace XamarinAdvanceRe
 {
     public partial class App : Application
@@ -13,7 +15,11 @@ namespace XamarinAdvanceRe
         {
             InitializeComponent();
 
-            MainPage = new XamarinAdvanceRe.MainPage();
+            MainPage = new NavigationPage(new Views.MainPage())
+            {
+                BarBackgroundColor = (Color)Current.Resources["BrandColorDark"],
+                BarTextColor = (Color)Current.Resources["PrimaryTextColorOnDark"]
+            };
         }
 
         protected override void OnStart()

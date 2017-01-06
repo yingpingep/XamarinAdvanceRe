@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:XamarinAdvanceRe"
+             x:Class="XamarinAdvanceRe.Views.MainPage"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             Title="Microsoft Student Partners in Taiwan">
+
+    <StackLayout BackgroundColor="{StaticResource BrandColor}">
+        <ffimageloading:CachedImage x:Name="CoverImage"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center"
+                                    WidthRequest="300"
+                                    HeightRequest="300"
+                                    DownsampleToViewSize="True" />
+
+        <Button x:Name="ManageBtn"
+                Text="Manage Person"
+                TextColor="{StaticResource PrimaryTextColor}"
+                Font="{StaticResource ButtonFont}"
+                BackgroundColor="{StaticResource BrandAccentColor}"
+                HorizontalOptions="Center"
+                VerticalOptions="CenterAndExpand"
+                WidthRequest="250"
+                HeightRequest="80" />
+        
+        <Button x:Name="LoginBtn"
+                Text="Login"
+                TextColor="{StaticResource PrimaryTextColor}"
+                Font="{StaticResource ButtonFont}"
+                BackgroundColor="{StaticResource BrandAccentColor}"
+                HorizontalOptions="Center"
+                VerticalOptions="CenterAndExpand"
+                WidthRequest="250"
+                HeightRequest="80" />
+    </StackLayout>
+</ContentPage>
