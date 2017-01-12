@@ -45,7 +45,7 @@ namespace XamarinAdvanceRe.Views
         private async void init()
         {
             UserDialogs.Instance.ShowLoading("Loading People", MaskType.Black);
-            users = await acs.CurrentClient.GetTable<Users>().ToListAsync();
+            users = await acs.CurrentClient.GetTable<Users>().ToListAsync();          
             peopleList.ItemsSource = users;
             UserDialogs.Instance.HideLoading();
         }
