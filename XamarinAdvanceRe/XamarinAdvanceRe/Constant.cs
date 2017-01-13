@@ -13,6 +13,8 @@ namespace XamarinAdvanceRe
         public static string DefaultPersonGroupId = "Default Person Group";
         public static string DefaultPersonGroupName = "Default Person Group";
         public static string ApplicationURL = "https://xademo.azurewebsites.net";
+        public static string MSPPictureURL = "https://scontent-tpe1-1.xx.fbcdn.net/v/t1.0-9/14492398_1288636481167411_4214539296251359956_n.png?oh=2a02e4547aca69938d556c4b89f6de0e&oe=58DAF0C4";
+        public static string UploadImgAPI = "https://msp11.azurewebsites.net/image";
         public static long ImageSize = 4000000;
     }
 }

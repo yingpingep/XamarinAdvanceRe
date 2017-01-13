@@ -84,7 +84,7 @@ namespace XamarinAdvanceRe.Services
             byte[] imgBytes = new byte[image.GetStream().Length];
             await image.GetStream().ReadAsync(imgBytes, 0, imgBytes.Length);
 
-            var message = await hClient.PostAsync("https://msp11.azurewebsites.net/image", new ByteArrayContent(imgBytes));
+            var message = await hClient.PostAsync(Constant.UploadImgAPI, new ByteArrayContent(imgBytes));
             return await message.Content.ReadAsStringAsync();            
         }
     }
