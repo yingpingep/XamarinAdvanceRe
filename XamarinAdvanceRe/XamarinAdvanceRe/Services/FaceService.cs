@@ -16,6 +16,9 @@ namespace XamarinAdvanceRe.Services
         public FaceService()
         {
             fsc = new FaceServiceClient(Constant.FaceApiKey);
+
+            // make sure the people group exist (200 if created successfully, 409 if existed)
+            fsc.CreatePersonGroupAsync(Constant.DefaultPersonGroupId, Constant.DefaultPersonGroupName);
         }
 
         // TODO : 新增的部分
@@ -62,15 +65,17 @@ namespace XamarinAdvanceRe.Services
              * -> return PersonId
              */
 
-            var id = (await fsc.CreatePersonAsync(Constant.DefaultGroupName, name)).PersonId;
+            // Get the globally unique identifier(GUID)
+            CreatePersonResult person = await fsc.CreatePersonAsync(Constant.DefaultPersonGroupId, name);
+            Guid id = person.PersonId;
 
             // Binding id and picture
-            await fsc.AddPersonFaceAsync(Constant.DefaultGroupName, id, picUrl);
-            await fsc.TrainPersonGroupAsync(Constant.DefaultGroupName);
+            await fsc.AddPersonFaceAsync(Constant.DefaultPersonGroupId, id, picUrl);
+            await fsc.TrainPersonGroupAsync(Constant.DefaultPersonGroupId);
 
             return id.ToString();
         }
-        
+
         public async Task<Person> GetUserDetail(Stream imageStream)
         {
             var faceResult = await fsc.DetectAsync(imageStream);
@@ -81,7 +86,7 @@ namespace XamarinAdvanceRe.Services
 
             Guid[] ids = new Guid[1];
             ids[0] = faceResult[0].FaceId;
-            var identyResult = (await fsc.IdentifyAsync(Constant.DefaultGroupName, ids))[0].Candidates;
+            var identyResult = (await fsc.IdentifyAsync(Constant.DefaultPersonGroupId, ids))[0].Candidates;
 
             if (identyResult.Length != 1)
             {
@@ -89,7 +94,7 @@ namespace XamarinAdvanceRe.Services
             }
 
             var id = identyResult[0].PersonId;
-            return await fsc.GetPersonAsync(Constant.DefaultGroupName, id);
+            return await fsc.GetPersonAsync(Constant.DefaultPersonGroupId, id);
         }
         // TODO: Add EasyProject here.
     }

@@ -28,7 +28,7 @@
                 <Entry x:Name="picUrl" Placeholder="http(s)://..." Margin="10" />
 
                 <Label Text="Description" Margin="10" Style="{StaticResource Body2Label}" />
-                <Entry x:Name="description" Placeholder="Dexcription About You ..."
+                <Entry x:Name="description" Placeholder="Description About You ..."
                        HeightRequest="100" Margin="10" />
 
                 <Label Text="Title" Margin="10" Style="{StaticResource Body2Label}" />
