@@ -18,14 +18,15 @@ namespace XamarinAdvanceRe.Views
         {
             InitializeComponent();
 
-            CoverImage.Source = ImageSource.FromUri(new Uri("https://scontent-tpe1-1.xx.fbcdn.net/v/t1.0-9/14492398_1288636481167411_4214539296251359956_n.png?oh=e0ec2d72b1e79a2f481a53d7149deda0&oe=586449C4"));
+            CoverImage.Source = ImageSource.FromUri(new Uri(Constant.MSPPictureURL));
             LoginBtn.Clicked += LoginBtn_Clicked;
             ManageBtn.Clicked += ManageBtn_Clicked;
         }
 
         private async void ManageBtn_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new ManageLayout(), true);
+            // await Navigation.PushAsync(new ManageLayout(), true);
+            await Navigation.PushAsync(new EasyFace(), true);
         }
 
         private async void LoginBtn_Clicked(object sender, EventArgs e)
