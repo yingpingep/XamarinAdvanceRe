@@ -75,10 +75,10 @@ namespace XamarinAdvanceRe.Views
                 
                 try
                 {
-                    var userDetail = await fs.GetUserDetail(photo.GetStream());
+                    var userDetail = await fs.GetUserDetailAsync(photo.GetStream());
                     UserDialogs.Instance.ShowLoading("Hi " + userDetail.Name + "\nDetecting emotion ...");
-                    var emotionRank = await es.GetEmotionRank(photo.GetStream());
-                    acs.UpdateEmotion(userDetail.PersonId.ToString(), emotionRank[0].Key);
+                    var emotionRank = await es.GetEmotionRankAsync(photo.GetStream());
+                    acs.UpdateEmotionAsync(userDetail.PersonId.ToString(), emotionRank[0].Key);
                     await Navigation.PushAsync(new FeelingList(userDetail.Name), true);
                 }
                 catch (Exception ex)

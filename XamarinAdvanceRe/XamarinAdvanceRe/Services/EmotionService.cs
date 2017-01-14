@@ -12,16 +12,16 @@ namespace XamarinAdvanceRe.Services
 {
     class EmotionService
     {
-        EmotionServiceClient esc;
+        EmotionServiceClient emotionserviceclient;
 
         public EmotionService()
         {
-            esc = new EmotionServiceClient(Constant.EmotionApiKey);
+            emotionserviceclient = new EmotionServiceClient(Constant.EmotionApiKey);
         }
 
-        public async Task<List<KeyValuePair<string, float>>> GetEmotionRank(Stream imageStream)
+        public async Task<List<KeyValuePair<string, float>>> GetEmotionRankAsync(Stream imageStream)
         {
-            var emotionResult = await esc.RecognizeAsync(imageStream);
+            var emotionResult = await emotionserviceclient.RecognizeAsync(imageStream);
             return emotionResult[0].Scores.ToRankedList().ToList();
         }
     }

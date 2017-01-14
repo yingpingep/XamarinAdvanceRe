@@ -29,7 +29,7 @@ namespace XamarinAdvanceRe.Views
             {
                 Draw draw = new Draw();
 
-                var mydata = await fs.DetectFace(ImageLocation.Text);
+                var mydata = await fs.DetectFaceAsync(ImageLocation.Text);
                 mydata.imageuri = ImageLocation.Text;
                 string imageBase64 = await draw.GetDrawedImage(mydata);
                 DisplayImage.Source = ImageSource.FromStream(() => draw.GetStream(imageBase64));   
@@ -43,7 +43,7 @@ namespace XamarinAdvanceRe.Views
         private async void IdentifyBtn_Clicked(object sender, EventArgs e)
         {
             HttpClient httpclient = new HttpClient();
-            var fff = await fs.GetUserDetail(await httpclient.GetStreamAsync(ImageLocation.Text));
+            var fff = await fs.GetUserDetailAsync(await httpclient.GetStreamAsync(ImageLocation.Text));
             Title = fff.Name.ToString();
         }
     }

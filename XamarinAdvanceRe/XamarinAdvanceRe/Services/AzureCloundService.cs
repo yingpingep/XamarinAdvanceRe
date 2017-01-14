@@ -13,17 +13,17 @@ namespace XamarinAdvanceRe.Services
     class AzureCloundService
     {
         IMobileServiceTable<Users> userTable;
-        MobileServiceClient msClient;
+        MobileServiceClient mobileserviceclient;
 
         public AzureCloundService()
         {
-            msClient = new MobileServiceClient(Constant.ApplicationURL);
-            userTable = msClient.GetTable<Users>();
+            mobileserviceclient = new MobileServiceClient(Constant.ApplicationURL);
+            userTable = mobileserviceclient.GetTable<Users>();
         }
 
         public MobileServiceClient CurrentClient
         {
-            get { return msClient; }
+            get { return mobileserviceclient; }
         }
 
         public IMobileServiceTable<Users> CurrentTable
@@ -31,7 +31,7 @@ namespace XamarinAdvanceRe.Services
             get { return userTable; }
         }
 
-        public async void UpdateEmotion(string id, string emotion)
+        public async Task UpdateEmotionAsync(string id, string emotion)
         {
             try
             {
@@ -55,10 +55,10 @@ namespace XamarinAdvanceRe.Services
             }
         }
 
-        public async Task AddPerson(string name, string picUrl = "", string title = "", string description = "")
+        public async Task AddPersonAsync(string name, string picUrl = "", string title = "", string description = "")
         {
-            FaceService fs = new FaceService();
-            var id = await fs.GetPersonId(name, picUrl);
+            FaceService faceservice = new FaceService();
+            var id = await faceservice.GetPersonIdAsync(name, picUrl);
 
             Users data = new Users
             {
@@ -78,7 +78,7 @@ namespace XamarinAdvanceRe.Services
             server code: https://github.com/oscar60310/mspimg
         */
 
-        public async Task<string> UploadImage(MediaFile image)
+        public async Task<string> UploadImageAsync(MediaFile image)
         {
             var hClient = new HttpClient();
             byte[] imgBytes = new byte[image.GetStream().Length];
