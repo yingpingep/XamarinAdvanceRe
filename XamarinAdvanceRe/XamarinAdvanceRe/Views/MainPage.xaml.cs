@@ -82,6 +82,7 @@ namespace XamarinAdvanceRe.Views
                 {
                     var userDetail = await faceservice.GetUserDetailAsync(photo.GetStream());
                     UserDialogs.Instance.ShowLoading("Hi " + userDetail.Name + "\nDetecting emotion ...");
+                    DependencyService.Get<ITextToSpeech>().Speak("Hi " + userDetail.Name + " welcome");
                     var emotionRank = await emotionservice.GetEmotionRankAsync(photo.GetStream());
                     await azureclientservice.UpdateEmotionAsync(userDetail.PersonId.ToString(), emotionRank[0].Key);
                     await Navigation.PushAsync(new FeelingListPage(userDetail.Name), true);

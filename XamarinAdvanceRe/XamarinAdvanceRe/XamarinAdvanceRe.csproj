@@ -43,6 +43,7 @@
     <Compile Include="Services\AzureCloudService.cs" />
     <Compile Include="Services\EmotionService.cs" />
     <Compile Include="Services\FaceService.cs" />
+    <Compile Include="Services\ITextToSpeech.cs" />
     <Compile Include="Views\AddMemberPage.xaml.cs">
       <DependentUpon>AddMemberPage.xaml</DependentUpon>
     </Compile>
