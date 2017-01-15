@@ -40,7 +40,7 @@
     </Compile>
     <Compile Include="Constant.cs" />
     <Compile Include="Data\Users.cs" />
-    <Compile Include="Services\AzureCloundService.cs" />
+    <Compile Include="Services\AzureCloudService.cs" />
     <Compile Include="Services\EmotionService.cs" />
     <Compile Include="Services\FaceService.cs" />
     <Compile Include="Views\AddPeople.xaml.cs">

@@ -20,13 +20,13 @@ namespace XamarinAdvanceRe.Services
             emotionserviceclient = new EmotionServiceClient(Constant.EmotionApiKey);
         }
 
-        public async Task<MyDataType> DetectEmotion()
+        public async Task<MyDataType> RecognizeEmotionAsync(string picUrl)
         {
             Emotion[] emotionResult;
 
             try
             {
-                emotionResult = await emotionserviceclient.RecognizeAsync(Constant.ImageUri.ToString());
+                emotionResult = await emotionserviceclient.RecognizeAsync(picUrl);
             }
             catch (Exception ex)
             {

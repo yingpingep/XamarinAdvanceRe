@@ -10,12 +10,12 @@ using XamarinAdvanceRe.Data;
 
 namespace XamarinAdvanceRe.Services
 {
-    class AzureCloundService
+    class AzureCloudService
     {
         IMobileServiceTable<Users> userTable;
         MobileServiceClient mobileserviceclient;
 
-        public AzureCloundService()
+        public AzureCloudService()
         {
             mobileserviceclient = new MobileServiceClient(Constant.ApplicationURL);
             userTable = mobileserviceclient.GetTable<Users>();
@@ -80,11 +80,11 @@ namespace XamarinAdvanceRe.Services
 
         public async Task<string> UploadImageAsync(MediaFile image)
         {
-            var hClient = new HttpClient();
+            var httpclient = new HttpClient();
             byte[] imgBytes = new byte[image.GetStream().Length];
             await image.GetStream().ReadAsync(imgBytes, 0, imgBytes.Length);
 
-            var message = await hClient.PostAsync(Constant.UploadImgAPI, new ByteArrayContent(imgBytes));
+            var message = await httpclient.PostAsync(Constant.UploadImgAPI, new ByteArrayContent(imgBytes));
             return await message.Content.ReadAsStringAsync();            
         }
     }
