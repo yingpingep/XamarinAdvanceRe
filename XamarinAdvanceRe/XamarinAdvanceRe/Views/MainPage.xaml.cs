@@ -8,7 +8,6 @@ using Acr.UserDialogs;
 using Plugin.Media;
 using Plugin.Media.Abstractions;
 using XamarinAdvanceRe.Services;
-using Microsoft.ProjectOxford.Common;
 
 namespace XamarinAdvanceRe.Views
 {

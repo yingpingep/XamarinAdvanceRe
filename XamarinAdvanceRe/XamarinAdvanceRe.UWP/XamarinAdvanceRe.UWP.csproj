@@ -109,7 +109,7 @@
     <None Include="Windows_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="+.png" />
+    <Content Include="add.png" />
     <Content Include="anger.png" />
     <Content Include="buttom.png" />
     <Content Include="camera.png" />

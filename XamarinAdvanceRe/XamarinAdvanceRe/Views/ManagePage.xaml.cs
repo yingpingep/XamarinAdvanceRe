@@ -24,7 +24,7 @@ namespace XamarinAdvanceRe.Views
             // i, a, w
             Padding = new Thickness(10, Device.OnPlatform(20, 0, 0), 0, 0);
 
-            ToolbarItems.Add(new ToolbarItem("Add Person", "+.png", async () =>
+            ToolbarItems.Add(new ToolbarItem("Add Person", "add.png", async () =>
             {
                 await Navigation.PushAsync(new AddMemberPage(), true);
             }));
