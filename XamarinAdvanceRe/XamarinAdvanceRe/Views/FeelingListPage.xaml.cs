@@ -42,6 +42,7 @@ namespace XamarinAdvanceRe.Views
                 user.emotionImg = GetEmotionImg(user.emotion);
                 user.emotion = " last onlne " + lastString;
             }
+            FeelingShow.ItemsSource = users;
         }
 
         private string GetEmotionImg(string emotion)

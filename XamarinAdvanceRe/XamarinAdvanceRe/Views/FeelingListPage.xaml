@@ -5,44 +5,44 @@
              xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
              BackgroundColor="{StaticResource LayoutColor}">
 
-    <ContentPage.Content>
-        <ListView x:Name="feelingShow"
+    <ListView x:Name="FeelingShow"
                   HasUnevenRows="True"
-                  SeparatorVisibility="None">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <StackLayout>
-                            <StackLayout Orientation="Horizontal">
-                                <controls:CircleImage Source="{Binding PicUrl}" Aspect="AspectFill" Margin="10">
-                                    <controls:CircleImage.WidthRequest>
-                                        <OnPlatform x:TypeArguments="x:Double"
+                  SeparatorVisibility="None"
+                  Margin="0, 0, 10, 0"
+                  BackgroundColor="{StaticResource LayoutColor}">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <controls:CircleImage Source="{Binding PicUrl}" Aspect="AspectFill" Margin="10">
+                                <controls:CircleImage.WidthRequest>
+                                    <OnPlatform x:TypeArguments="x:Double"
                                                     iOS="50"
                                                     Android="50"
                                                     WinPhone="50"/>
-                                    </controls:CircleImage.WidthRequest>
+                                </controls:CircleImage.WidthRequest>
 
-                                    <controls:CircleImage.HeightRequest>
-                                        <OnPlatform x:TypeArguments="x:Double"
+                                <controls:CircleImage.HeightRequest>
+                                    <OnPlatform x:TypeArguments="x:Double"
                                                     iOS="50"
                                                     Android="50"
                                                     WinPhone="50" />
-                                    </controls:CircleImage.HeightRequest>
-                                </controls:CircleImage>
+                                </controls:CircleImage.HeightRequest>
+                            </controls:CircleImage>
 
-                                <Image Source="{Binding emotionImg}" Margin="-30, 30, 0, 0" WidthRequest="20" />
+                            <Image Source="{Binding emotionImg}" Margin="-30, 30, 0, 0" WidthRequest="20" />
 
-                                <StackLayout Margin="10, 0">
-                                    <Label Text="{Binding Name}" FontSize="25"
+                            <StackLayout Margin="10, 0">
+                                <Label Text="{Binding Name}" FontSize="25"
                                            TextColor="#f35e20" />
-                                    <Label Text="{Binding emotion}"
+                                <Label Text="{Binding emotion}"
                                            TextColor="#3c414c" />
-                                </StackLayout>
                             </StackLayout>
                         </StackLayout>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-    </ContentPage.Content>
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
 </ContentPage>

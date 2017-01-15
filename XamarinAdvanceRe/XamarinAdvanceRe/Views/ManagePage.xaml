@@ -1,12 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="XamarinAdvanceRe.Views.ManagePage"
+             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
+             x:Class="XamarinAdvanceRe.Views.ManagePage"             
              Title="Group Member"
              BackgroundColor="{StaticResource LayoutColor}">
 
     <StackLayout>
         <ListView x:Name="MemberList"
+                  Margin="0, 0, 10, 0"
                   HasUnevenRows="True"
                   SeparatorVisibility="None"
                   BackgroundColor="{StaticResource LayoutColor}">
@@ -21,10 +23,21 @@
                         </ViewCell.ContextActions>
 
                         <StackLayout Orientation="Horizontal" Padding="5, 5, 10, 5">
-                            <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-                                <Image Source="{Binding PicUrl}" WidthRequest="60" HeightRequest="60" 
-                                    Aspect="AspectFill" />
-                            </StackLayout>
+                            <controls:CircleImage Source="{Binding PicUrl}" Aspect="AspectFill">
+                                <controls:CircleImage.WidthRequest>
+                                    <OnPlatform x:TypeArguments="x:Double"
+                                                    iOS="50"
+                                                    Android="50"
+                                                    WinPhone="50"/>
+                                </controls:CircleImage.WidthRequest>
+
+                                <controls:CircleImage.HeightRequest>
+                                    <OnPlatform x:TypeArguments="x:Double"
+                                                    iOS="50"
+                                                    Android="50"
+                                                    WinPhone="50"/>
+                                </controls:CircleImage.HeightRequest>
+                            </controls:CircleImage>
 
                             <StackLayout Padding="10, 5, 0, 5" VerticalOptions="Center">
                                 <Label Text="{Binding Name}" TextColor="#ff1493" />

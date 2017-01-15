@@ -11,17 +11,45 @@
         <Grid Margin="0, 20, 0, 0">
             <Image x:Name="CoverImageButtom"
                    HorizontalOptions="Center"
-                   VerticalOptions="Center" />
+                   VerticalOptions="Center">
+                <Image.WidthRequest>
+                    <OnPlatform x:TypeArguments="x:Double"
+                                iOS="200"
+                                Android="300"
+                                WinPhone="300"/>
+                </Image.WidthRequest>
+            </Image>
 
             <Image x:Name="CoverImageMiddle"
                    HorizontalOptions="Center"
-                   VerticalOptions="Center" />
+                   VerticalOptions="Center">
+                <Image.WidthRequest>
+                    <OnPlatform x:TypeArguments="x:Double"
+                                iOS="170"
+                                Android="270"
+                                WinPhone="270"/>
+                </Image.WidthRequest>
+            </Image>
 
             <controls:CircleImage x:Name="CoverImage"
+                                  Aspect="AspectFill"
                                   HorizontalOptions="Center"
-                                  VerticalOptions="Center" />
+                                  VerticalOptions="Center">
+                <controls:CircleImage.WidthRequest>
+                    <OnPlatform x:TypeArguments="x:Double"
+                                iOS="150"
+                                Android="240"
+                                WinPhone="240"/>
+                </controls:CircleImage.WidthRequest>
+                <controls:CircleImage.HeightRequest>
+                    <OnPlatform x:TypeArguments="x:Double"
+                                iOS="150"
+                                Android="240"
+                                WinPhone="240"/>
+                </controls:CircleImage.HeightRequest>
+            </controls:CircleImage>
         </Grid>
-        
+
 
         <Button x:Name="ManageBtn"
                 Text="Manage Person"
@@ -31,17 +59,43 @@
                 BorderRadius="30"
                 HorizontalOptions="Center"
                 VerticalOptions="CenterAndExpand"
-                WidthRequest="250"
-                HeightRequest="80"
-                Margin="0, 100, 0, 0" />
-        
+                Margin="0, 90, 0, 0">
+            <Button.WidthRequest>
+                <OnPlatform x:TypeArguments="x:Double"
+                            iOS="230"
+                            Android="250"
+                            WinPhone="250"/>
+            </Button.WidthRequest>
+
+            <Button.HeightRequest>
+                <OnPlatform x:TypeArguments="x:Double"
+                            iOS="60"
+                            Android="80"
+                            WinPhone="80"/>
+            </Button.HeightRequest>
+        </Button>
+
         <Button x:Name="LoginBtn"
+                Margin="0, 0, 0, 35"
                 Text="Login with Camera"
                 TextColor="{StaticResource PrimaryTextColor}"
                 Font="{StaticResource ButtonFont}"
                 BackgroundColor="{StaticResource ButtonColor}"
                 BorderRadius="30"
                 HorizontalOptions="Center"
-                VerticalOptions="CenterAndExpand" />
+                VerticalOptions="CenterAndExpand">
+            <Button.WidthRequest>
+                <OnPlatform x:TypeArguments="x:Double"
+                            iOS="230"
+                            Android="250"
+                            WinPhone="250"/>
+            </Button.WidthRequest>
+            <Button.HeightRequest>
+                <OnPlatform x:TypeArguments="x:Double"
+                            iOS="60"
+                            Android="80"
+                            WinPhone="80"/>
+            </Button.HeightRequest>
+        </Button>
     </StackLayout>
 </ContentPage>

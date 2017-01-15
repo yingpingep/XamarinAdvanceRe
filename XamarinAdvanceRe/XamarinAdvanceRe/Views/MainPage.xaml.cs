@@ -18,22 +18,12 @@ namespace XamarinAdvanceRe.Views
         {
             InitializeComponent();
 
-            CoverImageButtom.Source = ImageSource.FromFile("buttom.png");
-            CoverImageButtom.WidthRequest = Device.OnPlatform(200, 300, 300);
-
-            CoverImageMiddle.Source = ImageSource.FromFile("middle.png");
-            CoverImageMiddle.WidthRequest = Device.OnPlatform(170, 270, 270);
-
+            CoverImageButtom.Source = ImageSource.FromFile("buttom.png");            
+            CoverImageMiddle.Source = ImageSource.FromFile("middle.png");            
             CoverImage.Source = ImageSource.FromFile("pic.png");
-            CoverImage.WidthRequest = Device.OnPlatform(150, 240, 240);
 
             ManageBtn.Image = "man.png";
-            ManageBtn.WidthRequest = Device.OnPlatform(230, 250, 250);
-            ManageBtn.HeightRequest = Device.OnPlatform(60, 80, 80);
-
             LoginBtn.Image = "camera.png";
-            LoginBtn.WidthRequest = Device.OnPlatform(230, 250, 250);
-            LoginBtn.HeightRequest = Device.OnPlatform(60, 80, 80);
 
             LoginBtn.Clicked += LoginBtn_Clicked;
             ManageBtn.Clicked += ManageBtn_Clicked;
@@ -56,8 +46,7 @@ namespace XamarinAdvanceRe.Views
 
 
             MediaFile photo;
-
-
+       
             #region Camera
             /*
             if (CrossMedia.Current.IsCameraAvailable && CrossMedia.Current.IsTakePhotoSupported)
@@ -81,14 +70,14 @@ namespace XamarinAdvanceRe.Views
             if (photo != null)
             {
                 CoverImage.Source = ImageSource.FromFile(photo.Path);
-                
+
                 long size = photo.GetStream().Length;
                 if (size > Constant.ImageSize)
                 {
                     UserDialogs.Instance.ShowError("Image size is too large.");
                     return;
                 }
-                
+
                 try
                 {
                     var userDetail = await faceservice.GetUserDetailAsync(photo.GetStream());
