@@ -13,12 +13,12 @@ namespace XamarinAdvanceRe.Views
 {
     public partial class AddPeople : ContentPage
     {
-        AzureCloundService acs;
+        AzureCloudService azurecloudservice;
         public AddPeople()
         {
             InitializeComponent();
 
-            acs = new AzureCloundService();
+            azurecloudservice = new AzureCloudService();
             AddBtn.Clicked += AddBtn_Clicked;
             AddImage.Clicked += AddImage_Clicked;
         }        
@@ -26,7 +26,7 @@ namespace XamarinAdvanceRe.Views
         private async void AddBtn_Clicked(object sender, EventArgs e)
         {
             UserDialogs.Instance.ShowLoading("Loading", MaskType.Black);
-            await acs.AddPersonAsync(name.Text, picUrl.Text, title.Text, description.Text);
+            await azurecloudservice.AddPersonAsync(name.Text, picUrl.Text, title.Text, description.Text);
             UserDialogs.Instance.HideLoading();
 
             UserDialogs.Instance.ShowSuccess("Person Added");
@@ -43,7 +43,7 @@ namespace XamarinAdvanceRe.Views
 
             try
             {
-                picUrl.Text = await acs.UploadImageAsync(photo);
+                picUrl.Text = await azurecloudservice.UploadImageAsync(photo);
             }
             catch (Exception)
             {

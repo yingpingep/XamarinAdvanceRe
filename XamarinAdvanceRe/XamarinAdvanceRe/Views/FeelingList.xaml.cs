@@ -24,8 +24,8 @@ namespace XamarinAdvanceRe.Views
 
         private async void init()
         {
-            AzureCloundService acs = new AzureCloundService();
-            List<Users> users = await acs.CurrentClient.GetTable<Users>().ToListAsync();
+            AzureCloudService azurecloudservice = new AzureCloudService();
+            List<Users> users = await azurecloudservice.CurrentClient.GetTable<Users>().ToListAsync();
             foreach (var user in users)
             {
                 TimeSpan last = DateTime.Now - user.updatedAt;

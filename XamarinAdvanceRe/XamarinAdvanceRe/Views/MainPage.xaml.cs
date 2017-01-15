@@ -32,9 +32,9 @@ namespace XamarinAdvanceRe.Views
         private async void LoginBtn_Clicked(object sender, EventArgs e)
         {
             UserDialogs.Instance.ShowLoading("Login ...");
-            FaceService fs = new FaceService();
-            EmotionService es = new EmotionService();
-            AzureCloundService acs = new AzureCloundService();
+            FaceService faceservice = new FaceService();
+            EmotionService emotionservice = new EmotionService();
+            AzureCloudService azureclientservice = new AzureCloudService();
             await CrossMedia.Current.Initialize();
             UserDialogs.Instance.HideLoading();
 
@@ -75,10 +75,10 @@ namespace XamarinAdvanceRe.Views
                 
                 try
                 {
-                    var userDetail = await fs.GetUserDetailAsync(photo.GetStream());
+                    var userDetail = await faceservice.GetUserDetailAsync(photo.GetStream());
                     UserDialogs.Instance.ShowLoading("Hi " + userDetail.Name + "\nDetecting emotion ...");
-                    var emotionRank = await es.GetEmotionRankAsync(photo.GetStream());
-                    acs.UpdateEmotionAsync(userDetail.PersonId.ToString(), emotionRank[0].Key);
+                    var emotionRank = await emotionservice.GetEmotionRankAsync(photo.GetStream());
+                    await azureclientservice.UpdateEmotionAsync(userDetail.PersonId.ToString(), emotionRank[0].Key);
                     await Navigation.PushAsync(new FeelingList(userDetail.Name), true);
                 }
                 catch (Exception ex)

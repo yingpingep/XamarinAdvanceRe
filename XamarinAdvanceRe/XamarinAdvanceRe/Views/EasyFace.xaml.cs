@@ -13,12 +13,12 @@ namespace XamarinAdvanceRe.Views
 {
     public partial class EasyFace : ContentPage
     {
-        FaceService fs;
+        FaceService faceservice;
         public EasyFace()
         {
             InitializeComponent();
 
-            fs = new FaceService();
+            faceservice = new FaceService();
             DectedBtn.Clicked += DectedBtn_Clicked;
             IdentifyBtn.Clicked += IdentifyBtn_Clicked;
         }        
@@ -29,9 +29,9 @@ namespace XamarinAdvanceRe.Views
             {
                 Draw draw = new Draw();
 
-                var mydata = await fs.DetectFaceAsync(ImageLocation.Text);
+                var mydata = await faceservice.DetectFaceAsync(ImageLocation.Text);
                 mydata.imageuri = ImageLocation.Text;
-                string imageBase64 = await draw.GetDrawedImage(mydata);
+                string imageBase64 = await draw.GetDrawedImageAsync(mydata);
                 DisplayImage.Source = ImageSource.FromStream(() => draw.GetStream(imageBase64));   
             }
             catch (Exception)
@@ -43,8 +43,8 @@ namespace XamarinAdvanceRe.Views
         private async void IdentifyBtn_Clicked(object sender, EventArgs e)
         {
             HttpClient httpclient = new HttpClient();
-            var fff = await fs.GetUserDetailAsync(await httpclient.GetStreamAsync(ImageLocation.Text));
-            Title = fff.Name.ToString();
+            var loginuser = await faceservice.GetUserDetailAsync(await httpclient.GetStreamAsync(ImageLocation.Text));
+            Title = loginuser.Name.ToString();
         }
     }
 }

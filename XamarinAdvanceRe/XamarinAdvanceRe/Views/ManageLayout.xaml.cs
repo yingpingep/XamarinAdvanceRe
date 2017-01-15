@@ -14,7 +14,7 @@ namespace XamarinAdvanceRe.Views
     public partial class ManageLayout : ContentPage
     {
         List<Users> users = new List<Users>();
-        AzureCloundService acs = new AzureCloundService();
+        AzureCloudService azurecloudservice = new AzureCloudService();
         Users selectedUser = null;
         public ManageLayout()
         {
@@ -45,7 +45,7 @@ namespace XamarinAdvanceRe.Views
         private async void init()
         {
             UserDialogs.Instance.ShowLoading("Loading People", MaskType.Black);
-            users = await acs.CurrentClient.GetTable<Users>().ToListAsync();          
+            users = await azurecloudservice.CurrentClient.GetTable<Users>().ToListAsync();          
             peopleList.ItemsSource = users;
             UserDialogs.Instance.HideLoading();
         }
@@ -57,7 +57,7 @@ namespace XamarinAdvanceRe.Views
             try
             {
                 selectedUser = (Users)mi.BindingContext;
-                await acs.CurrentTable.DeleteAsync(selectedUser);
+                await azurecloudservice.CurrentTable.DeleteAsync(selectedUser);
                 init();
             }
             catch (Exception)
