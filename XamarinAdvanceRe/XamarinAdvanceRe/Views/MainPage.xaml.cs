@@ -31,21 +31,22 @@ namespace XamarinAdvanceRe.Views
         private async void ManageBtn_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new ManagePage(), true);
-            // await Navigation.PushAsync(new EasyFace(), true);
+            // await Navigation.PushAsync(new FaceTestPage(), true);
         }
 
         private async void LoginBtn_Clicked(object sender, EventArgs e)
         {
+            // await Navigation.PushAsync(new EmotionTestPage(), true);
             UserDialogs.Instance.ShowLoading("Login ...");
-            FaceService faceservice = new FaceService();
-            EmotionService emotionservice = new EmotionService();
+            FaceService faceService = new FaceService();
+            EmotionService emotionService = new EmotionService();
             AzureCloudService azureclientservice = new AzureCloudService();
             await CrossMedia.Current.Initialize();
             UserDialogs.Instance.HideLoading();
 
 
             MediaFile photo;
-       
+
             #region Camera
             /*
             if (CrossMedia.Current.IsCameraAvailable && CrossMedia.Current.IsTakePhotoSupported)
@@ -79,10 +80,10 @@ namespace XamarinAdvanceRe.Views
 
                 try
                 {
-                    var userDetail = await faceservice.GetUserDetailAsync(photo.GetStream());
+                    var userDetail = await faceService.GetUserDetailAsync(photo.GetStream());
                     UserDialogs.Instance.ShowLoading("Hi " + userDetail.Name + "\nDetecting emotion ...");
                     DependencyService.Get<ITextToSpeech>().Speak("Hi " + userDetail.Name + " welcome");
-                    var emotionRank = await emotionservice.GetEmotionRankAsync(photo.GetStream());
+                    var emotionRank = await emotionService.GetEmotionRankAsync(photo.GetStream());
                     await azureclientservice.UpdateEmotionAsync(userDetail.PersonId.ToString(), emotionRank[0].Key);
                     await Navigation.PushAsync(new FeelingListPage(userDetail.Name), true);
                 }

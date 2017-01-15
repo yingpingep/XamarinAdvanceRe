@@ -14,7 +14,7 @@ namespace XamarinAdvanceRe.Views
     public partial class ManagePage : ContentPage
     {
         List<MSP> users = new List<MSP>();
-        AzureCloudService azurecloudservice = new AzureCloudService();
+        AzureCloudService azureCloudService = new AzureCloudService();
         MSP selectedUser = null;
         public ManagePage()
         {
@@ -41,7 +41,7 @@ namespace XamarinAdvanceRe.Views
         private async void init()
         {
             UserDialogs.Instance.ShowLoading("Loading People", MaskType.Black);
-            users = await azurecloudservice.CurrentClient.GetTable<MSP>().ToListAsync();          
+            users = await azureCloudService.CurrentClient.GetTable<MSP>().ToListAsync();          
             MemberList.ItemsSource = users;
             UserDialogs.Instance.HideLoading();
         }
@@ -53,7 +53,7 @@ namespace XamarinAdvanceRe.Views
             try
             {
                 selectedUser = (MSP)mi.BindingContext;
-                await azurecloudservice.CurrentTable.DeleteAsync(selectedUser);
+                await azureCloudService.CurrentTable.DeleteAsync(selectedUser);
                 init();
             }
             catch (Exception)

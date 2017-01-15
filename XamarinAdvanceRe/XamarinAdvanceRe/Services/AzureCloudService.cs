@@ -13,17 +13,17 @@ namespace XamarinAdvanceRe.Services
     class AzureCloudService
     {
         IMobileServiceTable<MSP> userTable;
-        MobileServiceClient mobileserviceclient;
+        MobileServiceClient mobileServiceClient;
 
         public AzureCloudService()
         {
-            mobileserviceclient = new MobileServiceClient(Constant.ApplicationURL);
-            userTable = mobileserviceclient.GetTable<MSP>();
+            mobileServiceClient = new MobileServiceClient(Constant.ApplicationURL);
+            userTable = mobileServiceClient.GetTable<MSP>();
         }
 
         public MobileServiceClient CurrentClient
         {
-            get { return mobileserviceclient; }
+            get { return mobileServiceClient; }
         }
 
         public IMobileServiceTable<MSP> CurrentTable

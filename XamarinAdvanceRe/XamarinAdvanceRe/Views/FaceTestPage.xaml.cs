@@ -11,14 +11,14 @@ using System.Net.Http;
 
 namespace XamarinAdvanceRe.Views
 {
-    public partial class EasyFace : ContentPage
+    public partial class FaceTestPage : ContentPage
     {
-        FaceService faceservice;
-        public EasyFace()
+        FaceService faceService;
+        public FaceTestPage()
         {
             InitializeComponent();
 
-            faceservice = new FaceService();
+            faceService = new FaceService();
             DectedBtn.Clicked += DectedBtn_Clicked;
             IdentifyBtn.Clicked += IdentifyBtn_Clicked;
         }        
@@ -29,10 +29,11 @@ namespace XamarinAdvanceRe.Views
             {
                 Draw draw = new Draw();
 
-                var mydata = await faceservice.DetectFaceAsync(ImageLocation.Text);
-                mydata.imageuri = ImageLocation.Text;
-                string imageBase64 = await draw.GetDrawedImageAsync(mydata);
-                DisplayImage.Source = ImageSource.FromStream(() => draw.GetStream(imageBase64));   
+                var myData = await faceService.DetectFaceAsync(ImageLocation.Text);
+                myData.imageuri = ImageLocation.Text;
+                string imageBase64 = await draw.GetDrawedImageAsync(myData);
+                DisplayImage.Source = ImageSource.FromStream(() => draw.GetStream(imageBase64));
+                await faceService.GetPersonIdAsync(UserName.Text, ImageLocation.Text);
             }
             catch (Exception)
             {
@@ -42,9 +43,9 @@ namespace XamarinAdvanceRe.Views
 
         private async void IdentifyBtn_Clicked(object sender, EventArgs e)
         {
-            HttpClient httpclient = new HttpClient();
-            var loginuser = await faceservice.GetUserDetailAsync(await httpclient.GetStreamAsync(ImageLocation.Text));
-            Title = loginuser.Name.ToString();
+            HttpClient httpClient = new HttpClient();
+            var loginUser = await faceService.GetUserDetailAsync(await httpClient.GetStreamAsync(ImageLocation.Text));
+            Title = loginUser.Name.ToString();
         }
     }
 }

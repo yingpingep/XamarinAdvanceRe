@@ -13,20 +13,19 @@ namespace XamarinAdvanceRe.Services
 {
     class EmotionService
     {
-        EmotionServiceClient emotionserviceclient;
+        EmotionServiceClient emotionServiceClient;
+        Emotion[] emotionResult;
 
         public EmotionService()
         {
-            emotionserviceclient = new EmotionServiceClient(Constant.EmotionApiKey);
+            emotionServiceClient = new EmotionServiceClient(Constant.EmotionApiKey);
         }
 
         public async Task<MyDataType> RecognizeEmotionAsync(string picUrl)
-        {
-            Emotion[] emotionResult;
-
+        {        
             try
             {
-                emotionResult = await emotionserviceclient.RecognizeAsync(picUrl);
+                emotionResult = await emotionServiceClient.RecognizeAsync(picUrl);
             }
             catch (Exception ex)
             {
@@ -36,6 +35,7 @@ namespace XamarinAdvanceRe.Services
             MyDataType mydata = new MyDataType();
             mydata.rects = new List<Rect>();
             mydata.emoes = new List<string>();
+
             foreach (var item in emotionResult)
             {
                 mydata.rects.Add(new Rect(item.FaceRectangle.Left, item.FaceRectangle.Top, item.FaceRectangle.Height));
@@ -47,7 +47,7 @@ namespace XamarinAdvanceRe.Services
 
         public async Task<List<KeyValuePair<string, float>>> GetEmotionRankAsync(Stream imageStream)
         {
-            var emotionResult = await emotionserviceclient.RecognizeAsync(imageStream);
+            var emotionResult = await emotionServiceClient.RecognizeAsync(imageStream);
             return emotionResult[0].Scores.ToRankedList().ToList();
         }
     }

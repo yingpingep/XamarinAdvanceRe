@@ -12,13 +12,13 @@ namespace XamarinAdvanceRe.Services
 {
     class FaceService
     {
-        FaceServiceClient faceserviceclient;
+        FaceServiceClient faceServiceClient;
         public FaceService()
         {
-            faceserviceclient = new FaceServiceClient(Constant.FaceApiKey);
+            faceServiceClient = new FaceServiceClient(Constant.FaceApiKey);
 
             // make sure the people group exist (200 if created successfully, 409 if existed)
-            faceserviceclient.CreatePersonGroupAsync(Constant.DefaultPersonGroupId, Constant.DefaultPersonGroupName);
+            faceServiceClient.CreatePersonGroupAsync(Constant.DefaultPersonGroupId, Constant.DefaultPersonGroupName);
         }
 
         // TODO : 新增的部分
@@ -34,7 +34,7 @@ namespace XamarinAdvanceRe.Services
             {
                 // TODO: 使用 FaceServiceClient 提供的 DetectAsync 方法取得已辨識的臉部資訊
                 // Step 1: FaceServiceClient.DetectAsync(string, ...)                
-                faceResult = await faceserviceclient.DetectAsync(imageUrl, true, false, fats);
+                faceResult = await faceServiceClient.DetectAsync(imageUrl, true, false, fats);
             }
             catch (Exception ex)
             {
@@ -66,19 +66,19 @@ namespace XamarinAdvanceRe.Services
              */
 
             // Get the globally unique identifier(GUID)
-            CreatePersonResult person = await faceserviceclient.CreatePersonAsync(Constant.DefaultPersonGroupId, name);
+            CreatePersonResult person = await faceServiceClient.CreatePersonAsync(Constant.DefaultPersonGroupId, name);
             Guid id = person.PersonId;
 
             // Binding id and picture
-            await faceserviceclient.AddPersonFaceAsync(Constant.DefaultPersonGroupId, id, picUrl);
-            await faceserviceclient.TrainPersonGroupAsync(Constant.DefaultPersonGroupId);
+            await faceServiceClient.AddPersonFaceAsync(Constant.DefaultPersonGroupId, id, picUrl);
+            await faceServiceClient.TrainPersonGroupAsync(Constant.DefaultPersonGroupId);
 
             return id.ToString();
         }
 
         public async Task<Person> GetUserDetailAsync(Stream imageStream)
         {
-            var faceResult = await faceserviceclient.DetectAsync(imageStream);
+            var faceResult = await faceServiceClient.DetectAsync(imageStream);
             if (faceResult.Length > 1)
             {
                 throw new Exception(faceResult.Length + " faces detected.");
@@ -86,7 +86,7 @@ namespace XamarinAdvanceRe.Services
 
             Guid[] ids = new Guid[1];
             ids[0] = faceResult[0].FaceId;
-            var identyResult = (await faceserviceclient.IdentifyAsync(Constant.DefaultPersonGroupId, ids))[0].Candidates;
+            var identyResult = (await faceServiceClient.IdentifyAsync(Constant.DefaultPersonGroupId, ids))[0].Candidates;
 
             if (identyResult.Length != 1)
             {
@@ -94,7 +94,7 @@ namespace XamarinAdvanceRe.Services
             }
 
             var id = identyResult[0].PersonId;
-            return await faceserviceclient.GetPersonAsync(Constant.DefaultPersonGroupId, id);
+            return await faceServiceClient.GetPersonAsync(Constant.DefaultPersonGroupId, id);
         }
         // TODO: Add EasyProject here.
     }

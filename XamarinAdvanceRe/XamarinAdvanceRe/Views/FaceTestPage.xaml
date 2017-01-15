@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamarinAdvanceRe.Views.FaceTestPage"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             Title="Face">
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="300"/>
+        </Grid.RowDefinitions>
+
+
+        <ffimageloading:CachedImage x:Name="DisplayImage"
+                                    Grid.Row="0" />
+
+        <StackLayout Grid.Row="1"
+                     HorizontalOptions="Center"
+                     VerticalOptions="Center">
+
+            <Entry x:Name="UserName"
+                   HorizontalOptions="Center"
+                   HorizontalTextAlignment="Center"
+                   WidthRequest="500"
+                   Placeholder="Your Name" />
+            
+            <Entry x:Name="ImageLocation"
+                   HorizontalOptions="Center"
+                   HorizontalTextAlignment="Center"
+                   WidthRequest="500"
+                   Placeholder="Image URI Please" />
+
+            <Button x:Name="DectedBtn"
+                    HorizontalOptions="Center"
+                    VerticalOptions="End"                    
+                    Text="UPLOAD"
+                    FontSize="Medium" />
+
+            <Button x:Name="IdentifyBtn"
+                    HorizontalOptions="Center"
+                    VerticalOptions="End"                    
+                    Text="IDENTIFY"
+                    Font="{StaticResource ButtonFont}" />
+        </StackLayout>
+    </Grid>
+</ContentPage>
