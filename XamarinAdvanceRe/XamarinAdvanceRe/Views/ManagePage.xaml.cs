@@ -11,29 +11,25 @@ using Acr.UserDialogs;
 
 namespace XamarinAdvanceRe.Views
 {
-    public partial class ManageLayout : ContentPage
+    public partial class ManagePage : ContentPage
     {
-        List<Users> users = new List<Users>();
+        List<MSP> users = new List<MSP>();
         AzureCloudService azurecloudservice = new AzureCloudService();
-        Users selectedUser = null;
-        public ManageLayout()
+        MSP selectedUser = null;
+        public ManagePage()
         {
             InitializeComponent();
-
-            AddNew.WidthRequest = Device.OnPlatform(200, 250, 250);
-            AddNew.HeightRequest = Device.OnPlatform(60, 80, 80);
 
             // l, u, r, d
             // i, a, w
             Padding = new Thickness(10, Device.OnPlatform(20, 0, 0), 0, 0);
 
-            init();
-            AddNew.Clicked += AddNew_Clicked;            
-        }
+            ToolbarItems.Add(new ToolbarItem("Add Person", "+.png", async () =>
+            {
+                await Navigation.PushAsync(new AddMemberPage(), true);
+            }));
 
-        private async void AddNew_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new AddPeople(), true);
+            init();          
         }
 
         protected override void OnAppearing()
@@ -45,18 +41,18 @@ namespace XamarinAdvanceRe.Views
         private async void init()
         {
             UserDialogs.Instance.ShowLoading("Loading People", MaskType.Black);
-            users = await azurecloudservice.CurrentClient.GetTable<Users>().ToListAsync();          
-            peopleList.ItemsSource = users;
+            users = await azurecloudservice.CurrentClient.GetTable<MSP>().ToListAsync();          
+            MemberList.ItemsSource = users;
             UserDialogs.Instance.HideLoading();
         }
 
-        private async void DeletePerson(object sender, EventArgs e)
+        private async void DeleteMemberAsync(object sender, EventArgs e)
         {
             var mi = (MenuItem)sender;
 
             try
             {
-                selectedUser = (Users)mi.BindingContext;
+                selectedUser = (MSP)mi.BindingContext;
                 await azurecloudservice.CurrentTable.DeleteAsync(selectedUser);
                 init();
             }

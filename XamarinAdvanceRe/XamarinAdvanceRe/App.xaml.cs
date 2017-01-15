@@ -17,8 +17,8 @@ namespace XamarinAdvanceRe
 
             MainPage = new NavigationPage(new Views.MainPage())
             {
-                BarBackgroundColor = (Color)Current.Resources["BrandColorDark"],
-                BarTextColor = (Color)Current.Resources["PrimaryTextColorOnDark"]
+                BarBackgroundColor = (Color)Current.Resources["BrandColor"],
+                BarTextColor = (Color)Current.Resources["PrimaryTextColor"]
             };
         }
 

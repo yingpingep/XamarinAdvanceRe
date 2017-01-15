@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 
 namespace XamarinAdvanceRe.Data
 {
-    class Users
+    class MSP
     {
         [JsonProperty(PropertyName = "id")]
         public string Id { get; set; }

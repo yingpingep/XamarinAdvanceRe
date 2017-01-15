@@ -4,34 +4,44 @@
              xmlns:local="clr-namespace:XamarinAdvanceRe"
              x:Class="XamarinAdvanceRe.Views.MainPage"
              xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
              Title="Microsoft Student Partners in Taiwan">
 
-    <StackLayout BackgroundColor="{StaticResource BrandColor}">
-        <ffimageloading:CachedImage x:Name="CoverImage"
-                                    HorizontalOptions="Center"
-                                    VerticalOptions="Center"
-                                    WidthRequest="300"
-                                    HeightRequest="300"
-                                    DownsampleToViewSize="True" />
+    <StackLayout BackgroundColor="{StaticResource BrandAccentColor}">
+        <Grid Margin="0, 20, 0, 0">
+            <Image x:Name="CoverImageButtom"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center" />
+
+            <Image x:Name="CoverImageMiddle"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center" />
+
+            <controls:CircleImage x:Name="CoverImage"
+                                  HorizontalOptions="Center"
+                                  VerticalOptions="Center" />
+        </Grid>
+        
 
         <Button x:Name="ManageBtn"
                 Text="Manage Person"
                 TextColor="{StaticResource PrimaryTextColor}"
                 Font="{StaticResource ButtonFont}"
-                BackgroundColor="{StaticResource BrandAccentColor}"
+                BackgroundColor="{StaticResource ButtonColor}"
+                BorderRadius="30"
                 HorizontalOptions="Center"
                 VerticalOptions="CenterAndExpand"
                 WidthRequest="250"
-                HeightRequest="80" />
+                HeightRequest="80"
+                Margin="0, 100, 0, 0" />
         
         <Button x:Name="LoginBtn"
-                Text="Login"
+                Text="Login with Camera"
                 TextColor="{StaticResource PrimaryTextColor}"
                 Font="{StaticResource ButtonFont}"
-                BackgroundColor="{StaticResource BrandAccentColor}"
+                BackgroundColor="{StaticResource ButtonColor}"
+                BorderRadius="30"
                 HorizontalOptions="Center"
-                VerticalOptions="CenterAndExpand"
-                WidthRequest="250"
-                HeightRequest="80" />
+                VerticalOptions="CenterAndExpand" />
     </StackLayout>
 </ContentPage>

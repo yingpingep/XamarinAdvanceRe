@@ -12,13 +12,13 @@ namespace XamarinAdvanceRe.Services
 {
     class AzureCloudService
     {
-        IMobileServiceTable<Users> userTable;
+        IMobileServiceTable<MSP> userTable;
         MobileServiceClient mobileserviceclient;
 
         public AzureCloudService()
         {
             mobileserviceclient = new MobileServiceClient(Constant.ApplicationURL);
-            userTable = mobileserviceclient.GetTable<Users>();
+            userTable = mobileserviceclient.GetTable<MSP>();
         }
 
         public MobileServiceClient CurrentClient
@@ -26,7 +26,7 @@ namespace XamarinAdvanceRe.Services
             get { return mobileserviceclient; }
         }
 
-        public IMobileServiceTable<Users> CurrentTable
+        public IMobileServiceTable<MSP> CurrentTable
         {
             get { return userTable; }
         }
@@ -36,8 +36,8 @@ namespace XamarinAdvanceRe.Services
             try
             {
                 // Find the person with FaceAPI's id from personTable
-                IMobileServiceTableQuery<Users> query = userTable.Where(p => p.Personid == id);
-                List<Users> queryResult = await query.ToListAsync();
+                IMobileServiceTableQuery<MSP> query = userTable.Where(p => p.Personid == id);
+                List<MSP> queryResult = await query.ToListAsync();
 
                 if (queryResult.Count > 0)
                 {
@@ -60,7 +60,7 @@ namespace XamarinAdvanceRe.Services
             FaceService faceservice = new FaceService();
             var id = await faceservice.GetPersonIdAsync(name, picUrl);
 
-            Users data = new Users
+            MSP data = new MSP
             {
                 Name = name,
                 Title = title,

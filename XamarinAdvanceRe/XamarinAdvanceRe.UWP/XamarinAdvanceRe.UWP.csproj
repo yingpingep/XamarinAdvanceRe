@@ -108,12 +108,18 @@
     <None Include="Windows_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="+.png" />
     <Content Include="anger.png" />
+    <Content Include="buttom.png" />
+    <Content Include="camera.png" />
     <Content Include="contempt.png" />
     <Content Include="disgust.png" />
     <Content Include="fear.png" />
     <Content Include="happiness.png" />
+    <Content Include="man.png" />
+    <Content Include="middle.png" />
     <Content Include="neutral.png" />
+    <Content Include="pic.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />

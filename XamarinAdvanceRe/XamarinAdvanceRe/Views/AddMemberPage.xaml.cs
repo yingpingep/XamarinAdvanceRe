@@ -11,10 +11,10 @@ using Plugin.Media;
 
 namespace XamarinAdvanceRe.Views
 {
-    public partial class AddPeople : ContentPage
+    public partial class AddMemberPage : ContentPage
     {
         AzureCloudService azurecloudservice;
-        public AddPeople()
+        public AddMemberPage()
         {
             InitializeComponent();
 

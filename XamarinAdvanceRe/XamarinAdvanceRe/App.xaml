@@ -6,70 +6,18 @@
 
     <!-- Application resource dictionary -->
         <ResourceDictionary>
-            <Color x:Key="BrandColor">#3f51b5</Color>
-            <Color x:Key="BrandColorLight">#c5cae9</Color>
-            <Color x:Key="BrandColorDark">#303f9f</Color>
-            <Color x:Key="BrandAccentColor">#ffeb3b</Color>
+            <Color x:Key="BrandColor">#303f9f</Color>
+            <Color x:Key="BrandAccentColor">#0f1c66</Color>
+            <Color x:Key="LayoutColor">#b2b5ca</Color>
             
-            <!-- Text colors on light backgrounds -->
-            <Color x:FactoryMethod="FromRgba" x:Key="PrimaryTextColor">
-                <x:Arguments>
-                    <x:Double>0</x:Double>
-                    <x:Double>0</x:Double>
-                    <x:Double>0</x:Double>
-                    <x:Double>0.87</x:Double>
-                </x:Arguments>
-            </Color>
+            <!-- Text colors  -->
+            <Color x:Key="PrimaryTextColor">White</Color>
+            <Color x:Key="TitleTextColor">#c6c6c6</Color>
+            <Color x:Key="ButtonColor">#878bd2</Color>
 
-            <Color x:FactoryMethod="FromRgba" x:Key="SecondaryTextColor">
-                <x:Arguments>
-                    <x:Double>0</x:Double>
-                    <x:Double>0</x:Double>
-                    <x:Double>0</x:Double>
-                    <x:Double>0.54</x:Double>
-                </x:Arguments>
-            </Color>
+            <Color x:Key="SecondaryTextColor">Black</Color>
 
-            <Color x:FactoryMethod="FromRgba" x:Key="DividersColor">
-                <x:Arguments>
-                    <x:Double>0</x:Double>
-                    <x:Double>0</x:Double>
-                    <x:Double>0</x:Double>
-                    <x:Double>0.12</x:Double>
-                </x:Arguments>
-            </Color>
-            
-            <!-- Text colors on dark backgrounds -->
-            <Color x:Key="PrimaryTextColorOnDark">
-                #fff
-            </Color>
-
-            <Color x:FactoryMethod="FromRgba" x:Key="SecondaryTextColorOnDark">
-                <x:Arguments>
-                    <x:Double>255</x:Double>
-                    <x:Double>255</x:Double>
-                    <x:Double>255</x:Double>
-                    <x:Double>0.70</x:Double>
-                </x:Arguments>
-            </Color>
-
-            <Color x:FactoryMethod="FromRgba" x:Key="DisabledTextColorOnDark">
-                <x:Arguments>
-                    <x:Double>255</x:Double>
-                    <x:Double>255</x:Double>
-                    <x:Double>255</x:Double>
-                    <x:Double>0.30</x:Double>
-                </x:Arguments>
-            </Color>
-            
-            <Color x:FactoryMethod="FromRgba" x:Key="DividersColorOnDark">
-                <x:Arguments>
-                    <x:Double>255</x:Double>
-                    <x:Double>255</x:Double>
-                    <x:Double>255</x:Double>
-                    <x:Double>0.12</x:Double>
-                </x:Arguments>
-            </Color>
+            <Color x:Key="DividersColor">White</Color>
 
             <!-- Font Setting -->
             <OnPlatform x:Key="RegularFontFamily"
@@ -90,9 +38,16 @@
                         Android="sans-serif-medium"
                         WinPhone="" />
 
-            <Font x:Key="ButtonFont"
-                  FontSize="20"
-                  FontFamily="{StaticResource MediumFontFamily}" />
+            <OnPlatform x:Key="ButtonFontSize"
+                        x:TypeArguments="x:Double"
+                        iOS="14"
+                        Android="20"
+                        WinPhone="20" />
+
+            <Font x:Key="ButtonFont"                  
+                  FontFamily="{StaticResource MediumFontFamily}" 
+                  FontSize="{StaticResource ButtonFontSize}"
+                  />
 
             <Font x:Key="CaptionFont"
                   FontSize="12"

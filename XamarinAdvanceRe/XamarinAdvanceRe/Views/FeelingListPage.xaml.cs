@@ -11,11 +11,12 @@ using Acr.UserDialogs;
 
 namespace XamarinAdvanceRe.Views
 {
-    public partial class FeelingList : ContentPage
+    public partial class FeelingListPage : ContentPage
     {
-        public FeelingList(string name)
+        public FeelingListPage(string name)
         {
             InitializeComponent();
+
             Title = "Hello " + name;
             UserDialogs.Instance.ShowLoading("Loading person", MaskType.Black);
             init();
@@ -25,7 +26,7 @@ namespace XamarinAdvanceRe.Views
         private async void init()
         {
             AzureCloudService azurecloudservice = new AzureCloudService();
-            List<Users> users = await azurecloudservice.CurrentClient.GetTable<Users>().ToListAsync();
+            List<MSP> users = await azurecloudservice.CurrentClient.GetTable<MSP>().ToListAsync();
             foreach (var user in users)
             {
                 TimeSpan last = DateTime.Now - user.updatedAt;

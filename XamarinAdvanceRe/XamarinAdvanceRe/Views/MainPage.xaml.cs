@@ -18,15 +18,31 @@ namespace XamarinAdvanceRe.Views
         {
             InitializeComponent();
 
-            CoverImage.Source = ImageSource.FromUri(new Uri(Constant.MSPPictureURL));
+            CoverImageButtom.Source = ImageSource.FromFile("buttom.png");
+            CoverImageButtom.WidthRequest = Device.OnPlatform(200, 300, 300);
+
+            CoverImageMiddle.Source = ImageSource.FromFile("middle.png");
+            CoverImageMiddle.WidthRequest = Device.OnPlatform(170, 270, 270);
+
+            CoverImage.Source = ImageSource.FromFile("pic.png");
+            CoverImage.WidthRequest = Device.OnPlatform(150, 240, 240);
+
+            ManageBtn.Image = "man.png";
+            ManageBtn.WidthRequest = Device.OnPlatform(230, 250, 250);
+            ManageBtn.HeightRequest = Device.OnPlatform(60, 80, 80);
+
+            LoginBtn.Image = "camera.png";
+            LoginBtn.WidthRequest = Device.OnPlatform(230, 250, 250);
+            LoginBtn.HeightRequest = Device.OnPlatform(60, 80, 80);
+
             LoginBtn.Clicked += LoginBtn_Clicked;
             ManageBtn.Clicked += ManageBtn_Clicked;
         }
 
         private async void ManageBtn_Clicked(object sender, EventArgs e)
         {
-            // await Navigation.PushAsync(new ManageLayout(), true);
-            await Navigation.PushAsync(new EasyFace(), true);
+            await Navigation.PushAsync(new ManagePage(), true);
+            // await Navigation.PushAsync(new EasyFace(), true);
         }
 
         private async void LoginBtn_Clicked(object sender, EventArgs e)
@@ -79,7 +95,7 @@ namespace XamarinAdvanceRe.Views
                     UserDialogs.Instance.ShowLoading("Hi " + userDetail.Name + "\nDetecting emotion ...");
                     var emotionRank = await emotionservice.GetEmotionRankAsync(photo.GetStream());
                     await azureclientservice.UpdateEmotionAsync(userDetail.PersonId.ToString(), emotionRank[0].Key);
-                    await Navigation.PushAsync(new FeelingList(userDetail.Name), true);
+                    await Navigation.PushAsync(new FeelingListPage(userDetail.Name), true);
                 }
                 catch (Exception ex)
                 {

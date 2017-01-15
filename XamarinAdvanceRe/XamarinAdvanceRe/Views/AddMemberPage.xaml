@@ -1,14 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="XamarinAdvanceRe.Views.AddPeople"
-             BackgroundColor="{StaticResource BrandColor}"
-             Title="Add Person">
-    <ScrollView>
-        <ContentView BackgroundColor="White" Margin="20">
-            <StackLayout Padding="0, 20, 0, 0"
+             x:Class="XamarinAdvanceRe.Views.AddMemberPage"
+             BackgroundColor="{StaticResource BrandColor}">
+    <ScrollView BackgroundColor="{StaticResource LayoutColor}">
+        <ContentView>
+            <StackLayout Margin="20, 20, 20, 20"
+                         Padding="0, 20, 0, 20"
                          HorizontalOptions="FillAndExpand"
-                         VerticalOptions="CenterAndExpand">
+                         VerticalOptions="CenterAndExpand"
+                         BackgroundColor="White">
                 <Label Text="Your Name" Margin="10" Style="{StaticResource Body2Label}" />
                 <Entry x:Name="name" Placeholder="Your Name" Margin="10" />
 
@@ -19,7 +20,8 @@
                             TextColor="{StaticResource PrimaryTextColor}"
                             Font="{StaticResource ButtonFont}"
                             FontSize="Micro"
-                            BackgroundColor="{StaticResource BrandAccentColor}"
+                            BackgroundColor="{StaticResource ButtonColor}"
+                            BorderRadius="30"
                             HorizontalOptions="Center"
                             VerticalOptions="CenterAndExpand"
                             WidthRequest="100"
@@ -38,7 +40,8 @@
                         Text="Upload"
                         TextColor="{StaticResource PrimaryTextColor}"
                         Font="{StaticResource ButtonFont}"                        
-                        BackgroundColor="{StaticResource BrandAccentColor}"
+                        BackgroundColor="{StaticResource ButtonColor}"
+                        BorderRadius="30"
                         HorizontalOptions="Center"
                         VerticalOptions="CenterAndExpand"
                         WidthRequest="250"
