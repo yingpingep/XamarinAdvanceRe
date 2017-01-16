@@ -40,6 +40,10 @@ namespace XamarinAdvanceRe.Views
             UserDialogs.Instance.HideLoading();
 
             var photo = await CrossMedia.Current.PickPhotoAsync();
+            if (picUrl.Text == null)
+            {
+                return;
+            }
 
             try
             {
