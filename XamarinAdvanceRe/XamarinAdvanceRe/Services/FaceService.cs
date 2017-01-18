@@ -35,6 +35,10 @@ namespace XamarinAdvanceRe.Services
                 // Step 1: FaceServiceClient.DetectAsync(string, ...)                
                 faceResult = await faceServiceClient.DetectAsync(imageUrl, true, false, fats);
             }
+            catch (FaceAPIException faceapiException)
+            {
+                throw new Exception("Your image size need smaller than 4MB OR You're out of the free quota.", faceapiException);
+            }
             catch (Exception ex)
             {
                 throw ex;
@@ -65,14 +69,21 @@ namespace XamarinAdvanceRe.Services
              */
 
             // Get the globally unique identifier(GUID)
-            CreatePersonResult person = await faceServiceClient.CreatePersonAsync(Constant.DefaultPersonGroupId, name);
-            Guid id = person.PersonId;
+            try
+            {
+                CreatePersonResult person = await faceServiceClient.CreatePersonAsync(Constant.DefaultPersonGroupId, name);
+                Guid id = person.PersonId;
 
-            // Binding id and picture
-            await faceServiceClient.AddPersonFaceAsync(Constant.DefaultPersonGroupId, id, picUrl);
-            await faceServiceClient.TrainPersonGroupAsync(Constant.DefaultPersonGroupId);
+                // Binding id and picture
+                await faceServiceClient.AddPersonFaceAsync(Constant.DefaultPersonGroupId, id, picUrl);
+                await faceServiceClient.TrainPersonGroupAsync(Constant.DefaultPersonGroupId);
 
-            return id.ToString();
+                return id.ToString();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("TOOOOO MAny PPPPPPEOOOOOPLLLLLE！！！！ one person at one time please.", ex);
+            }
         }
 
         public async Task<Person> GetUserDetailAsync(Stream imageStream)

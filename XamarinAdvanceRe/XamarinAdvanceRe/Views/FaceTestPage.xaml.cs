@@ -34,10 +34,10 @@ namespace XamarinAdvanceRe.Views
                 string imageBase64 = await draw.GetDrawedImageAsync(myData);
                 DisplayImage.Source = ImageSource.FromStream(() => draw.GetStream(imageBase64));
                 await faceService.GetPersonIdAsync(UserName.Text, ImageLocation.Text);
-            }
+            }            
             catch (Exception ex)
             {
-                await DisplayAlert("ERROR", ex.ToString(), "ok");
+                await DisplayAlert("ERROR", ex.Message, "ok");
             }
         }
 

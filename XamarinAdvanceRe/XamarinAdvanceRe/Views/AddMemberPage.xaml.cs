@@ -24,13 +24,22 @@ namespace XamarinAdvanceRe.Views
         }        
 
         private async void AddBtn_Clicked(object sender, EventArgs e)
-        {
-            UserDialogs.Instance.ShowLoading("Loading", MaskType.Black);
-            await azureCloudService.AddPersonAsync(name.Text, picUrl.Text, title.Text, description.Text);
-            UserDialogs.Instance.HideLoading();
+        {            
 
-            UserDialogs.Instance.ShowSuccess("Person Added");
-            await Navigation.PopAsync(true);
+            UserDialogs.Instance.ShowLoading("Loading", MaskType.Black);
+            try
+            {
+                await azureCloudService.AddPersonAsync(name.Text, picUrl.Text, title.Text, description.Text);
+                UserDialogs.Instance.HideLoading();
+
+                UserDialogs.Instance.ShowSuccess("Person Added");
+                await Navigation.PopAsync(true);
+            }
+            catch (Exception)
+            {
+                await DisplayAlert("ERROR", "You cannot let the Picture URL be empty", "OK");
+                UserDialogs.Instance.HideLoading();
+            }
         }
 
         private async void AddImage_Clicked(object sender, EventArgs e)
@@ -40,7 +49,8 @@ namespace XamarinAdvanceRe.Views
             UserDialogs.Instance.HideLoading();
 
             var photo = await CrossMedia.Current.PickPhotoAsync();
-            if (picUrl.Text == null)
+
+            if (photo == null)
             {
                 return;
             }
@@ -49,9 +59,9 @@ namespace XamarinAdvanceRe.Views
             {
                 picUrl.Text = await azureCloudService.UploadImageAsync(photo);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                UserDialogs.Instance.ShowError("Upload fail.");
+                UserDialogs.Instance.ShowError(ex.Message);
             }
         }        
     }

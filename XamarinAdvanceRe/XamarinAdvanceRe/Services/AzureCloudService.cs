@@ -58,19 +58,28 @@ namespace XamarinAdvanceRe.Services
         public async Task AddPersonAsync(string name, string picUrl = "", string title = "", string description = "")
         {
             FaceService faceservice = new FaceService();
-            var id = await faceservice.GetPersonIdAsync(name, picUrl);
 
-            MSP data = new MSP
+            try
             {
-                Name = name,
-                Title = title,
-                Description = description,
-                Personid = id,
-                Image = picUrl,
-                emotion = "Happiness"
-            };
+                var id = await faceservice.GetPersonIdAsync(name, picUrl);
 
-            await userTable.InsertAsync(data);
+                MSP data = new MSP
+                {
+                    Name = name,
+                    Title = title,
+                    Description = description,
+                    Personid = id,
+                    Image = picUrl,
+                    emotion = "Happiness"
+                };
+
+                await userTable.InsertAsync(data);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            
         }
 
         /*  

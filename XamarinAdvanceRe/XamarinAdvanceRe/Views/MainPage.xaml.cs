@@ -30,8 +30,8 @@ namespace XamarinAdvanceRe.Views
 
         private async void ManageBtn_Clicked(object sender, EventArgs e)
         {
-            // await Navigation.PushAsync(new ManagePage(), true);
-            await Navigation.PushAsync(new FaceTestPage(), true);
+            await Navigation.PushAsync(new ManagePage(), true);
+            // await Navigation.PushAsync(new FaceTestPage(), true);
         }
 
         private async void LoginBtn_Clicked(object sender, EventArgs e)

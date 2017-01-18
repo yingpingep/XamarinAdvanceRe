@@ -8,7 +8,7 @@ namespace XamarinAdvanceRe
 {
     class Constant
     {
-        public static string FaceApiKey = "bd3c01799f104fe9a15b22a13fa3c61e";
+        public static string FaceApiKey = "7a9292d350c44097a23b20fd303d5573";
         public static string EmotionApiKey = "379cd41322db460392c29495b2feaefc";
         public static string DefaultPersonGroupId = "default";
         public static string DefaultPersonGroupName = "test";
