@@ -99,6 +99,5 @@ namespace XamarinAdvanceRe.Services
             var id = identyResult[0].PersonId;
             return await faceServiceClient.GetPersonAsync(Constant.DefaultPersonGroupId, id);
         }
-        // TODO: Add EasyProject here.
     }
 }

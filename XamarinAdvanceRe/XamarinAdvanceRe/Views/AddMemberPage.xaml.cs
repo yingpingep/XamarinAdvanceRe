@@ -52,7 +52,7 @@ namespace XamarinAdvanceRe.Views
 
             if (photo == null)
             {
-                UserDialogs.Instance.ShowError(ex.Message);
+                UserDialogs.Instance.HideLoading();
                 return;
             }
 
