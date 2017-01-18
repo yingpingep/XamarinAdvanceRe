@@ -37,7 +37,7 @@ namespace XamarinAdvanceRe.Views
             }
             catch (Exception)
             {
-                await DisplayAlert("ERROR", "You cannot let the Picture URL be empty", "OK");
+                await DisplayAlert("ERROR", "You cannot let the Picture URL OR Name be empty", "OK");
                 UserDialogs.Instance.HideLoading();
             }
         }
@@ -52,6 +52,7 @@ namespace XamarinAdvanceRe.Views
 
             if (photo == null)
             {
+                UserDialogs.Instance.ShowError(ex.Message);
                 return;
             }
 

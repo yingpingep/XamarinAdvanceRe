@@ -31,8 +31,6 @@ namespace XamarinAdvanceRe.Services
             Face[] faceResult;
             try
             {
-                // TODO: 使用 FaceServiceClient 提供的 DetectAsync 方法取得已辨識的臉部資訊
-                // Step 1: FaceServiceClient.DetectAsync(string, ...)                
                 faceResult = await faceServiceClient.DetectAsync(imageUrl, true, false, fats);
             }
             catch (FaceAPIException faceapiException)
@@ -44,11 +42,6 @@ namespace XamarinAdvanceRe.Services
                 throw ex;
             }
 
-            // TODO: 建立 MyDataType 型別的物件，整理 FaceServiceClient 傳回的資訊，方便後續使用
-            // Step 1: new MyDataType();
-            // Step 2: foreach (faces)
-            // Step 3: rects.Add(new Rect(int, int, int))
-            // Step 4: ages.Add(new Age(FaceAttributes.Age))            
             MyDataType mydata = new MyDataType();
             foreach (var item in faceResult)
             {
@@ -82,7 +75,7 @@ namespace XamarinAdvanceRe.Services
             }
             catch (Exception ex)
             {
-                throw new Exception("TOOOOO MAny PPPPPPEOOOOOPLLLLLE！！！！ one person at one time please.", ex);
+                throw new Exception("Detected more than one person.", ex);
             }
         }
 
