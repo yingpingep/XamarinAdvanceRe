@@ -50,9 +50,6 @@
     <Compile Include="Views\FaceTestPage.xaml.cs">
       <DependentUpon>FaceTestPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\EmotionTestPage.xaml.cs">
-      <DependentUpon>EmotionTestPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\FeelingListPage.xaml.cs">
       <DependentUpon>FeelingListPage.xaml</DependentUpon>
     </Compile>
@@ -188,12 +185,6 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\FaceTestPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Views\EmotionTestPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

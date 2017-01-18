@@ -35,9 +35,9 @@ namespace XamarinAdvanceRe.Views
                 DisplayImage.Source = ImageSource.FromStream(() => draw.GetStream(imageBase64));
                 await faceService.GetPersonIdAsync(UserName.Text, ImageLocation.Text);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                await DisplayAlert("ERROR", "Your Image URI is wrong.", "ok");
+                await DisplayAlert("ERROR", ex.ToString(), "ok");
             }
         }
 
