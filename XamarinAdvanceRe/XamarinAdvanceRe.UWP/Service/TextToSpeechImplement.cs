@@ -5,12 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 
 using XamarinAdvanceRe.Services;
-using XamarinAdvanceRe.UWP;
+using XamarinAdvanceRe.UWP.Service;
 using Windows.Media.SpeechSynthesis;
 using Windows.UI.Xaml.Controls;
 
 [assembly: Xamarin.Forms.Dependency(typeof(TextToSpeechImplement))]
-namespace XamarinAdvanceRe.UWP
+namespace XamarinAdvanceRe.UWP.Service
 {
     public class TextToSpeechImplement : ITextToSpeech
     {

@@ -33,7 +33,6 @@ namespace XamarinAdvanceRe.Droid.Services
             }
             else
             {
-                var parameter = new Dictionary<string, string>();
                 speaker.Speak(toSpeak, QueueMode.Flush, null);
             }
         }
@@ -42,7 +41,6 @@ namespace XamarinAdvanceRe.Droid.Services
         {
             if (status.Equals(OperationResult.Success))
             {
-                var parameter = new Dictionary<string, string>();
                 speaker.Speak(toSpeak, QueueMode.Flush, null);
             }
         }

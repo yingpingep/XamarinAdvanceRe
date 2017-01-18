@@ -21,7 +21,6 @@ namespace XamarinAdvanceRe.Services
             faceServiceClient.CreatePersonGroupAsync(Constant.DefaultPersonGroupId, Constant.DefaultPersonGroupName);
         }
 
-        // TODO : 新增的部分
         public async Task<MyDataType> DetectFaceAsync(string imageUrl)
         {
             FaceAttributeType[] fats = new FaceAttributeType[]
